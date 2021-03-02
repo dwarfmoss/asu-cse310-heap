@@ -10,7 +10,7 @@ using namespace std;
 int main() {
     char c;
     int n, f;
-    int i, v;
+    int i;// int v;
     string line;
     ifstream inFile;
     ofstream outFile;

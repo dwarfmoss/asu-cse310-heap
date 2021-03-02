@@ -16,7 +16,6 @@ HEAP* heapInit (int n) {
 	// 	}
 	// }
     return new HEAP {n, 0, elArr};
-    //return new HEAP {n, 0, new ElementT[n]};
 }
 
 void printHeap (HEAP* heap) {
