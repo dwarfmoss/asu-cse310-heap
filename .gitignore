@@ -1,0 +1,5 @@
+run
+*.o
+*.txt
+*.sh
+*.zip
