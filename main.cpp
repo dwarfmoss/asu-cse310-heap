@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 #include "util.h"
-#include "Heap.h"
+#include "heap.h"
 // #include "element.h"
 using namespace std;
 
