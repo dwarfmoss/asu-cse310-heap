@@ -19,7 +19,7 @@ HEAP* heapInit (int n) {
 }
 
 void printHeap (HEAP* heap) {
-	printf("sizeof=%d\n", (int)sizeof(heap));
+	//printf("sizeof=%d\n", (int)sizeof(heap));
 	printf("capacity=%d, size=%d\n", heap->capacity, heap->size);
 	for (int i = 0; i < heap->size; i++) {
 	    if (i == heap->size - 1) {

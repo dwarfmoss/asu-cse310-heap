@@ -41,7 +41,7 @@ int main() {
                             break;
                         }
                         getline(inFile, line);
-                        printf("b1: %s\n", line.c_str());
+                        //printf("b1: %s\n", line.c_str());
                         if (stoi(line) > heap->capacity) {
                             printf("Error: heap overflow\n");
                             inFile.close();
@@ -61,6 +61,10 @@ int main() {
                         if (heap) {
                             //File* oFile = fopen("HEAPoutput.txt", "w");
                             outFile.open("HEAPoutput.txt");
+                            if (!outFile) {
+                                printf("Error: cannot open file for writing\n");
+                                break;
+                            }
                             
                             outFile << heap->size << endl;
                             i = 0;
