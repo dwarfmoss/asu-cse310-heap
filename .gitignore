@@ -1,0 +1,6 @@
+run
+*.o
+HEAPinput.txt
+HEAPoutput.txt
+input.txt
+output.txt
