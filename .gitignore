@@ -1,8 +1,5 @@
 run
 *.o
-HEAPinput.txt
-HEAPoutput.txt
-input.txt
-output.txt
-run.sh
+*.txt
+*.sh
 *.zip
