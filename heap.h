@@ -1,4 +1,7 @@
 #pragma once
+#include <stdio.h>
+#include <fstream>
+using namespace std;
 
 typedef struct TAG_ELEMENT {
     int key;
@@ -6,12 +9,14 @@ typedef struct TAG_ELEMENT {
 
 typedef ELEMENT* ElementT;
 
- typedef struct TAG_HEAP {
-     int capacity; /* max size of the heap */
-     int size; /* current size of the heap */
-     ElementT *H; /* pointer to pointers to elements */
- } HEAP;
+typedef struct TAG_HEAP {
+    int capacity; /* max size of the heap */
+    int size; /* current size of the heap */
+    ElementT *H; /* pointer to pointers to elements */
+} HEAP;
 
- HEAP* heapInit (int);
+HEAP* HeapInit (int);
 
- void printHeap (HEAP*);
+void PrintHeap (HEAP*);
+ 
+void WriteHeap (HEAP*); 

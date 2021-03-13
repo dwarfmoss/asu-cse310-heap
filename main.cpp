@@ -9,85 +9,59 @@ using namespace std;
 
 int main() {
     char c;
-    int n, f;
-    int i;// int v;
-    string line;
-    ifstream inFile;
-    ofstream outFile;
+    int i, f, v;
     HEAP* heap = NULL;
 
     while (1) {
-        c = nextCommand(&n, &f);
+        c = nextCommand(&i, &f, &v);
         switch (c) {
-            case 's':
+            case 's': // Stop program
             case 'S':   printf("COMMAND: %c\n", c); exit(0);
-
-            case 'c':
-            case 'C':   printf("COMMAND: %c %d\n", c, n);
-                        heap = heapInit(n);
-                        break;
-
-            case 'r':
-            case 'R':   printf("COMMAND: %c\n", c);
-                        inFile.open("HEAPinput.txt");
-                        if (!inFile) {
-                            printf("Error: cannot open file for reading\n");
-                            break;
-                        }
-
-                        if (!heap) {
-                            printf("Error: heap overflow\n");
-                            inFile.close();
-                            break;
-                        }
-                        getline(inFile, line);
-                        //printf("b1: %s\n", line.c_str());
-                        if (stoi(line) > heap->capacity) {
-                            printf("Error: heap overflow\n");
-                            inFile.close();
-                            break;
-                        }
-
-                        while (getline(inFile, line)) {
-                            //printf("w1: %s\n", line.c_str());
-                            heap->H[heap->size]->key = stoi(line);
-                            heap->size++;
-                        }
-                        inFile.close();
-                        break;
-
-            case 'w':
-            case 'W':   printf("COMMAND: %c\n", c);
-                        if (heap) {
-                            //File* oFile = fopen("HEAPoutput.txt", "w");
-                            outFile.open("HEAPoutput.txt");
-                            if (!outFile) {
-                                printf("Error: cannot open file for writing\n");
-                                break;
-                            }
-                            
-                            outFile << heap->size << endl;
-                            i = 0;
-                            while (i < heap->size) {
-                                outFile << heap->H[i]->key << endl;
-                                i++;
-                            }
-                            
-                            outFile.close();
-                        } else {
-                            printf("Error: heap is NULL\n");
-                        }
-                        break;
-
-            case 'p':
+        
+            case 'p': // Print Heap
             case 'P':   printf("COMMAND: %c\n", c);
                         if (heap) {
-                            printHeap(heap);
+                            PrintHeap(heap);
                         } else {
                             printf("Error: heap is NULL\n");
                         }
                         break;
+        
+            case 'w': // Write Heap to file
+            case 'W':   printf("COMMAND: %c\n", c);
+                        if (heap) {
+                            WriteHeap(heap);
+                        } else {
+                            printf("Error: heap is NULL\n");
+                        }
+                        
+                        break;
 
+            case 'c': // Create heap
+            case 'C':   printf("COMMAND: %c %d\n", c, v);
+                        heap = HeapInit(v);
+                        break;
+        
+            case 'r': // Read heap data from file
+            case 'R':   printf("COMMAND: %c %d\n", c, f);
+                        ReadFile(heap, f);
+                        break;
+        
+            case 'i': // Insert value into heap
+            case 'I':   printf("COMMAND: %c %d\n", c, v);
+                        
+                        break;
+
+            case 'd': // Delete min element from heap
+            case 'D':   printf("COMMAND: %c %d\n", c, f);
+                        
+                        break;
+        
+            case 'k': // Decrease the value of the specified key to the specified value
+            case 'K':   printf("COMMAND: %c %d %d\n", c, i, v);
+                        
+                        break;
+        
             default: break;
         }
     }

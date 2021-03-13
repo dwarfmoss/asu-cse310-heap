@@ -1,7 +1,6 @@
-#include <stdio.h>
 #include "heap.h"
 
-HEAP* heapInit (int n) {
+HEAP* HeapInit (int n) {
     // Dynamically allocate heap and element array
     ElementT* elArr = new ElementT[n];
     for (int i = 0; i < n; i++) {
@@ -18,7 +17,7 @@ HEAP* heapInit (int n) {
     return new HEAP {n, 0, elArr};
 }
 
-void printHeap (HEAP* heap) {
+void PrintHeap (HEAP* heap) {
 	//printf("sizeof=%d\n", (int)sizeof(heap));
 	printf("capacity=%d, size=%d\n", heap->capacity, heap->size);
 	for (int i = 0; i < heap->size; i++) {
@@ -28,4 +27,23 @@ void printHeap (HEAP* heap) {
 	        printf("%d, ", heap->H[i]->key);
 	    }
 	}
+}
+
+void WriteHeap (HEAP* heap) {
+    ofstream outFile;
+	//File* oFile = fopen("HEAPoutput.txt", "w");
+	outFile.open("HEAPoutput.txt");
+	if (!outFile) {
+		printf("Error: cannot open file for writing\n");
+		return;
+	}
+	
+	outFile << heap->size << endl;
+	int i = 0;
+	while (i < heap->size) {
+		outFile << heap->H[i]->key << endl;
+		i++;
+	}
+	
+	outFile.close();
 }
