@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <fstream>
-#include <string>
 #include "util.h"
 #include "heap.h"
 // #include "element.h"
