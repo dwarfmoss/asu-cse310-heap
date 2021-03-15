@@ -1,17 +1,23 @@
 #pragma once
+#include <stdio.h>
+#include <fstream>
+#include "element.h"
+using namespace std;
 
-typedef struct TAG_ELEMENT {
-    int key;
-} ELEMENT;
+struct Heap {
+    int capacity;
+    int size;
+    Element* H;
 
-typedef ELEMENT* ElementT;
+    //Constructor
+    Heap (int);
 
- typedef struct TAG_HEAP {
-     int capacity; /* max size of the heap */
-     int size; /* current size of the heap */
-     ElementT *H; /* pointer to pointers to elements */
- } HEAP;
+    void PrintHeap ();
+    void WriteHeap ();
 
- HEAP* heapInit (int);
-
- void printHeap (HEAP*);
+    int MinHeapify (int);
+    int BuildMinHeap ();
+    void ExtractMin(int);
+    void DecreaseKey(int, int);
+    void Insert(int);
+};
